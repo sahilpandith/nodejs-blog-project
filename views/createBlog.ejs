@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+<body>
+    <h1>Express App Powered By EJS</h1>
+    
+    <%- include('./partials/nav.ejs') %>
+    
+    <h2> Create Blog</h2>
+    <form action="/blogs" method="post" class="form-class">
+        <label for="name">Title</label>
+        <input type="text" id="name" name="title">
+        <label for="body">Blog</label>
+        <textarea name="body" id="body" cols="30" rows="10" name="body"></textarea>
+        <div></div>
+        <button type="submit">Sumit</button>
+    </form>
+
+    <h1><%- include('./partials/footer.ejs') %></h1>
+
+</body>
+</html>

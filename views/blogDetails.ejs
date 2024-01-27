@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+<body>
+    <h1>Express App Powered By EJS</h1>
+    
+    <%- include('./partials/nav.ejs') %>
+
+    <h2>Blog details</h2>
+    <ul>
+        <li>
+            <h3><%= blog.title %></h3>
+            <div> <span>Body :  </span><%= blog.body %></div>
+            <div><span>Updated At : </span> <%= blog.updatedAt.toDateString() %></div>
+        </li>
+     </ul>
+     <button type="button" class="delete-btn" data-doc="<%= blog._id %>">Delete</button>
+
+    <h1><%- include('./partials/footer.ejs') %></h1>
+
+    <script>
+        const btn = document.querySelector('.delete-btn');
+        const endpoint = `/blog/${btn.dataset.doc}`;
+        btn.addEventListener('click',() => {
+            console.log(endpoint);
+            fetch(endpoint,{
+                method: 'DELETE'
+            }).then(res => res.json()).then(data => {
+                window.location.href = data.redirect;
+            }).catch(err => console.error(err));
+        })
+    </script>
+</body>
+</html>

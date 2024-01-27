@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+<body>
+    <h1>Express App Powered By EJS</h1>
+    
+    <%- include('./partials/nav.ejs') %>
+
+    <h2>Blogs</h2>
+    <ul>
+        <% if(blogs.length>0) { %>
+            <% blogs.forEach((blog) => { %>
+                    <a href="/blogs/<%= blog._id %>">
+                        <li><h3><%= blog.title %></h3>
+                    </a>
+                    <div><%= blog.body %></div></li>
+             <%}) %>
+        <% } %>
+     </ul>
+    <% if(blogs.length===0) { %>
+        <div>No Data Available</div>
+        <% } %>
+
+    <h1><%- include('./partials/footer.ejs') %>
+    </h1>
+</body>
+</html>
